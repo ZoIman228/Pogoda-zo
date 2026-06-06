@@ -4,7 +4,6 @@ const input = document.getElementById("city-input");
 const searchBtn = document.getElementById("search-btn");
 const result = document.getElementById("weather-result");
 
-// Background layer elements for smooth transitions
 const bgA = document.getElementById("bg-a");
 const bgB = document.getElementById("bg-b");
 let activeBg = bgA;
@@ -12,7 +11,6 @@ let activeBg = bgA;
 function crossfadeTo(url) {
   const incoming = activeBg === bgA ? bgB : bgA;
   incoming.style.backgroundImage = `url("${url}")`;
-  // ensure image applied before switching classes
   requestAnimationFrame(() => {
     incoming.classList.add("active");
     activeBg.classList.remove("active");
@@ -29,7 +27,6 @@ function pickBackgroundFromCondition(condText) {
   if (/dust|sand/.test(t)) return "images/засуха.jpg";
   if (/clear|sunny/.test(t)) return "images/сонячно.jpg";
   if (/cloud|overcast/.test(t)) return "images/хмарно.jpg";
-  // fallback to default background if nothing matches
   return "images/images (4).png";
 }
 
@@ -42,14 +39,12 @@ async function fetchWeather(q) {
     const data = await resp.json();
     if (data.error) throw new Error(data.error.message || "API error");
     renderWeather(data);
-    // set dynamic background according to current condition
     try {
-      const cond = data.current && data.current.condition && data.current.condition.text;
+      const cond =
+        data.current && data.current.condition && data.current.condition.text;
       const bg = pickBackgroundFromCondition(cond);
       crossfadeTo(bg);
-    } catch (e) {
-      // ignore background errors
-    }
+    } catch (e) {}
   } catch (err) {
     result.innerHTML = `<div class="error">Помилка: ${err.message}</div>`;
   }
@@ -114,6 +109,11 @@ searchBtn.addEventListener("click", () => {
     result.innerHTML = '<div class="error">Введіть назву міста</div>';
     return;
   }
+  if (q.toLowerCase() === "zov") {
+    result.innerHTML = "";
+    crossfadeTo("images/гав.jpg");
+    return;
+  }
   fetchWeather(q);
 });
 
@@ -124,5 +124,10 @@ input.addEventListener("keydown", (e) => {
 const params = new URLSearchParams(location.search);
 if (params.get("city")) {
   input.value = params.get("city");
-  fetchWeather(params.get("city"));
+  const initial = params.get("city").trim();
+  if (initial.toLowerCase() === "zov") {
+    crossfadeTo("images/гав.jpg");
+  } else {
+    fetchWeather(initial);
+  }
 }
