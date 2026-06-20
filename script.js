@@ -1,8 +1,6 @@
-// Consolidated and cleaned client script
 (() => {
   const API_KEY = "f0d6a0da789f48808a6123315263005";
 
-  // Background layers
   const bgA = document.getElementById("bg-a");
   const bgB = document.getElementById("bg-b");
   let activeBg = bgA || bgB || null;
@@ -28,7 +26,6 @@
     return "images/images (4).png";
   }
 
-  // Weather UI
   const cityInput = document.getElementById("city-input");
   const searchBtn = document.getElementById("search-btn");
   const result = document.getElementById("weather-result");
@@ -49,7 +46,6 @@
         const bg = pickBackgroundFromCondition(cond);
         crossfadeTo(bg);
       } catch (e) {
-        // ignore
       }
     } catch (err) {
       result.innerHTML = `<div class="error">Помилка: ${err.message}</div>`;
@@ -144,7 +140,6 @@
     }
   }
 
-  // Theme handling
   const themeToggle = document.getElementById("theme-toggle");
   function updateThemeButton(isDark) {
     if (!themeToggle) return;
@@ -172,7 +167,6 @@
     applyTheme(prefersDark ? "dark" : "light");
   }
 
-  // Registration & auth
   const regEmail = document.getElementById("reg-email");
   const regName = document.getElementById("reg-name");
   const regPassword = document.getElementById("reg-password");
@@ -282,7 +276,6 @@
     });
   }
 
-  // Login (login.html)
   const loginBtn = document.getElementById("login-btn");
   const loginEmail = document.getElementById("login-email");
   const loginPassword = document.getElementById("login-password");

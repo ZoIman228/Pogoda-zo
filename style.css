@@ -64,7 +64,6 @@ body {
   overflow: auto;
 }
 
-/* Theme toggle */
 #theme-toggle {
   position: absolute;
   top: 12px;
@@ -94,7 +93,6 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* City input */
 #city-input {
   display: block;
   margin: 0 auto;
@@ -199,7 +197,6 @@ body {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Registration form */
 .auth-form {
   margin: 12px auto 0 auto;
   max-width: 420px;
@@ -263,7 +260,6 @@ body {
   margin-top: 10px;
 }
 
-/* Auth nav */
 .auth-nav {
   margin-top: 12px;
   font-size: 14px;
@@ -305,7 +301,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Login form */
 .login-form {
   max-width: 420px;
   margin: 0 auto;
@@ -353,7 +348,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Weather-themed backgrounds — reduced overlay so image shows through more */
 body.bg-default {
   background:
     linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)),
@@ -402,7 +396,6 @@ body.bg-thunder {
   background-position: center;
 }
 
-/* Dark theme */
 body.theme-dark {
   background:
     linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
@@ -436,7 +429,6 @@ body.theme-dark #theme-toggle {
   color: #fff;
 }
 
-/* Password visibility toggle */
 .password-wrap {
   position: relative;
   margin-top: 10px;

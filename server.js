@@ -97,7 +97,6 @@ app.post("/api/login", (req, res) => {
   );
 });
 
-// Serve static files (the frontend)
 app.use(express.static(path.join(__dirname, ".")));
 
 function startServer(initialPort, maxAttempts = 20) {
