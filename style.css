@@ -436,6 +436,41 @@ body.theme-dark #theme-toggle {
   color: #fff;
 }
 
+/* Password visibility toggle */
+.password-wrap {
+  position: relative;
+  margin-top: 10px;
+}
+.password-wrap input {
+  margin-top: 0 !important;
+  padding-right: 44px !important;
+  width: 100%;
+}
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 140ms ease;
+}
+.eye-btn:hover {
+  color: #fff;
+}
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: opacity 140ms ease;
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 20px 16px;

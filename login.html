@@ -12,7 +12,14 @@
       <h1>Увійти</h1>
       <div class="login-form">
         <input type="email" id="login-email" placeholder="Email" />
-        <input type="password" id="login-password" placeholder="Пароль" />
+        <div class="password-wrap">
+          <input type="password" id="login-password" placeholder="Пароль" />
+          <button type="button" class="eye-btn" onclick="togglePassword('login-password', this)" aria-label="Показати пароль">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
         <button id="login-btn">Увійти</button>
         <div id="login-msg" role="status" aria-live="polite"></div>
         <div class="auth-nav">
@@ -22,5 +29,14 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      function togglePassword(inputId, btn) {
+        var input = document.getElementById(inputId);
+        var isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        btn.setAttribute('aria-label', isHidden ? 'Приховати пароль' : 'Показати пароль');
+        btn.querySelector('.eye-icon').style.opacity = isHidden ? '0.45' : '1';
+      }
+    </script>
   </body>
 </html>

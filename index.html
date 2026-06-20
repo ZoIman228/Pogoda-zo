@@ -23,12 +23,22 @@
           <h2 id="auth-heading">Реєстрація</h2>
           <input type="text" id="reg-name" placeholder="Ім'я (необов'язково)" />
           <input type="email" id="reg-email" placeholder="Email" />
-          <input type="password" id="reg-password" placeholder="Пароль" />
-          <input
-            type="password"
-            id="reg-password2"
-            placeholder="Повторіть пароль"
-          />
+          <div class="password-wrap">
+            <input type="password" id="reg-password" placeholder="Пароль" />
+            <button type="button" class="eye-btn" onclick="togglePassword('reg-password', this)" aria-label="Показати пароль">
+              <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <div class="password-wrap">
+            <input type="password" id="reg-password2" placeholder="Повторіть пароль" />
+            <button type="button" class="eye-btn" onclick="togglePassword('reg-password2', this)" aria-label="Показати пароль">
+              <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
           <button id="reg-btn">Зареєструватися</button>
           <div id="reg-msg" role="status" aria-live="polite"></div>
           <div class="auth-nav">
@@ -58,5 +68,14 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
+    <script>
+      function togglePassword(inputId, btn) {
+        var input = document.getElementById(inputId);
+        var isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        btn.setAttribute('aria-label', isHidden ? 'Приховати пароль' : 'Показати пароль');
+        btn.querySelector('.eye-icon').style.opacity = isHidden ? '0.45' : '1';
+      }
+    </script>
   </body>
 </html>
